@@ -1,4 +1,4 @@
-FROM amd64/fedora:latest
+FROM arm64v8/fedora:latest
 
 VOLUME /build
 WORKDIR /build
@@ -20,4 +20,4 @@ RUN flatpak remote-add flathub https://dl.flathub.org/repo/flathub.flatpakrepo &
 # gnome-builder test suite depends on this
 RUN cat /dev/urandom | tr -dc a-f0-9 | head -c32 > /etc/machine-id && echo "" >> /etc/machine-id
 
-RUN flatpak install -y --noninteractive gnome-nightly org.gnome.Sdk org.gnome.Platform
+RUN flatpak install -y --noninteractive -vv gnome-nightly org.gnome.Sdk org.gnome.Platform
